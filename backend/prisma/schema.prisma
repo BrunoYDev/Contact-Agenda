@@ -30,7 +30,7 @@ model Contact {
   cellphone    String
   registerDate DateTime @default(now()) @db.Timestamptz(3)
 
-  client   Client @relation(fields: [clientId], references: [id])
+  client   Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
   clientId String
 
   @@map("contacts")

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
+
 export const Container = styled.div `
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    background-image: url('./peakpx.jpg');
+    background-image: url('public/peakpx.jpg');
 
     header {
         border-bottom: 2px solid black;

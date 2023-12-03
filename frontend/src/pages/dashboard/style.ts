@@ -6,7 +6,7 @@ export const Container = styled.div `
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    background-image: url('public/peakpx.jpg');
+    background-image: url('assets/peakpx.jpg');
 
     header {
         border-bottom: 2px solid black;

@@ -27,8 +27,9 @@ export const ModalEditUser = ({ toggleModal, setUser}: ModalEditUserProps) => {
 
   const editUser = async (data: EditData) => {
     Object.keys(data).forEach((key) => {
-      if (data[key] === "") {
-        delete data[key];
+      const validKey = key as keyof typeof data;
+      if (data[validKey] === "") {
+        delete data[validKey];
       }
     });
     try {

@@ -25,7 +25,6 @@ export class ContactsController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   create(@Body() createContactDto: CreateContactDto, @Request() req) {
-    console.log(req.user)
     return this.contactsService.create(createContactDto, req.user.id);
   }
 

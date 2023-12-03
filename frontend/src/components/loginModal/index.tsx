@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useUser } from "../../hooks/UserHook";
 import { Modal } from "../Modal";
 
+
 interface LoginModalProps {
   toggleModal: () => void;
 }
@@ -19,8 +20,9 @@ export const LoginModal = ({ toggleModal }: LoginModalProps) => {
   });
 
   const submit = (data: LoginData) => {
-    signIn(data);
+      signIn(data);
   };
+
   return (
     <Modal toggleModal={toggleModal}>
       <h2>Entrar</h2>

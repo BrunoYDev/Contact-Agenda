@@ -46,6 +46,10 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 
   const signIn = async (data: LoginData) => {
     try {
+      toast.info("Entrando na conta..", {
+        autoClose: 2000,
+        theme: "dark",
+      });
       const response = await api.post("/login", data);
       const { token } = response.data;
 
@@ -62,6 +66,10 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 
   const registerUser = async (data: RegisterData) => {
     try {
+      toast.info("Cadastrando usuario!", {
+        autoClose: 2000,
+        theme: "dark",
+      });
       const response = await api.post("/clients", data);
       const { status } = response;
       if (status === 201) {

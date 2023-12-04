@@ -4,6 +4,7 @@ import { api } from "../services/api";
 import { RegisterData } from "../components/registerModal/RegisterSchema";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { jwtDecode } from "jwt-decode";
 
 interface UserProviderProps {
   children: ReactNode;
@@ -14,6 +15,7 @@ interface UserContextValues {
   signIn: (data: LoginData) => void;
   registerUser: (data: RegisterData) => void;
   logOut: () => void;
+  deleteUser: () => void;
   token: string | null;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -43,6 +45,18 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     window.localStorage.clear();
     navigate("/");
   };
+
+  const deleteUser = async () => {
+    const userId = jwtDecode(token!).sub;
+    await api.delete(`/clients/${userId}`)
+    window.localStorage.clear();
+    toast.success("Usuario deletado com sucesso!", {
+      autoClose: 2000,
+      theme: "dark",
+    });
+    navigate("/")
+
+  }
 
   const signIn = async (data: LoginData) => {
     try {
@@ -87,7 +101,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   };
 
   return (
-    <UserContext.Provider value={{ signIn, registerUser,isLoading,setIsLoading,logOut,token }}>
+    <UserContext.Provider value={{ signIn, registerUser,isLoading,setIsLoading,logOut,token, deleteUser }}>
       {children}
     </UserContext.Provider>
   );

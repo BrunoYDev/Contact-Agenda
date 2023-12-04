@@ -6,15 +6,18 @@ import { Client } from "../../pages/dashboard";
 import { Modal } from "../Modal";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
+import { useUser } from "../../hooks/UserHook";
 
 interface ModalEditUserProps {
   toggleModal: () => void;
   setUser: React.Dispatch<React.SetStateAction<Client | undefined>>;
 }
 
+
 export const ModalEditUser = ({ toggleModal, setUser}: ModalEditUserProps) => {
   const token = localStorage.getItem("@Agenda:Token");
   const userId = jwtDecode(token!).sub;
+  const { deleteUser } = useUser()
 
   const {
     register,
@@ -65,7 +68,7 @@ export const ModalEditUser = ({ toggleModal, setUser}: ModalEditUserProps) => {
 
         <div id="buttonContainer">
         <button type="submit">Editar usuario</button>
-        <button type="button" id="excludeUser">Excluir</button>
+        <button type="button" id="excludeUser" onClick={() => deleteUser()}>Excluir</button>
         </div>
       </form>
     </Modal>

@@ -1,13 +1,18 @@
 import { z } from "zod";
 
 export const schema = z.object({
-  fullname: z.string().optional(),
-  email: z.string().email("Precisa ser um email válido").optional(),
+  fullname: z.string().optional().or(z.literal("")),
+  email: z
+    .string()
+    .email("Precisa ser um email válido")
+    .optional()
+    .or(z.literal("")),
   cellphone: z
     .string()
     .min(11, "Numero tem que ser de 11 a 12 digitos")
     .max(12, "Numero tem que ser de 11 a 12 digitos")
-    .optional(),
+    .optional()
+    .or(z.literal("")),
   password: z
     .string()
     .regex(/(?=.*?[A-Z])/, "É necessário ao menos uma letra maiúscula")
@@ -17,7 +22,8 @@ export const schema = z.object({
       /(?=.*?[?!;:*&$@#])/,
       "É necessário pelo menos um caractere especial"
     )
-    .optional(),
+    .optional()
+    .or(z.literal("")),
 });
 
 type data = z.infer<typeof schema>;

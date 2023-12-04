@@ -47,7 +47,7 @@ export const Card = ({
       <p id="name">Nome: <span>{contact.fullname}</span></p>
       <p id="number">Numero: <span>{contact.cellphone}</span></p>
       <p id="email">E-mail: <span>{contact.email}</span></p>
-      <p id="registerDate">Data de registrio: <span>{newDate}</span></p>
+      <p id="registerDate">Data de registro: <span>{newDate}</span></p>
       <div>
       <button id="editButton" type="button" onClick={() => toggleModalEditContact()}>
         Editar

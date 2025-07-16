@@ -1,4 +1,4 @@
-# Full-Stack Project: Contacts-Agenda
+# Full-Stack Project: Contact-Agenda
 
 This is a complete full-stack project, consisting of a robust back-end API and a modern, reactive front-end UI.
 
